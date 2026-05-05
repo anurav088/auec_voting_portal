@@ -15,7 +15,7 @@ SUFFIX_RACE_MAP: list[tuple[str, list[str]]] = [
     ("_ug2023@ashoka.edu.in", ["president", "gensec", "council_4th_year"]),
     ("_ug2024@ashoka.edu.in", ["president", "gensec", "council_3rd_year"]),
     ("_ug2025@ashoka.edu.in", ["president", "gensec", "council_2nd_year"]),
-    ("_ug25@ashoka.edu.in", ["president", "gensec", "council_2nd_year", "council_3rd_year", "council_4th_year"]),
+    ("_ug25@ashoka.edu.in", ["president", "gensec", "council_2nd_year", "council_3rd_year", "council_4th_year", "council_masters"]),
     ("_ma2024@ashoka.edu.in", ["president", "gensec", "council_masters"]),
     ("_ma2025@ashoka.edu.in", ["president", "gensec", "council_masters"]),
     ("@ashoka.edu.in",        ["president", "gensec"]),
