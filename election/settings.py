@@ -26,6 +26,9 @@ CSRF_TRUSTED_ORIGINS = [
     if h not in ("127.0.0.1", "localhost")
 ]
 
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
 # —— Apps ———————————————————————————————————————————————————————————————————
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
