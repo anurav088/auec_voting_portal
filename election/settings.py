@@ -48,6 +48,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "election.urls"
+WSGI_APPLICATION = "election.wsgi.application"
 
 TEMPLATES = [
     {
