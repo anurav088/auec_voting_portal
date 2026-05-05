@@ -69,7 +69,7 @@ TEMPLATES = [
 
 # —— Static files ————————————————————————————————————————————————————————————
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = Path("/staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # —— Database ————————————————————————————————————————————————————————————————
