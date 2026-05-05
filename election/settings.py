@@ -12,23 +12,34 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
-# ── Core ──────────────────────────────────────────────────────────────────────
+# —— Core ———————————————————————————————————————————————————————————————————
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
-# ── Apps ──────────────────────────────────────────────────────────────────────
+# Reads comma-separated hosts from env, e.g. "myapp.railway.app,myapp.up.railway.app"
+_raw_hosts = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost")
+ALLOWED_HOSTS = [h.strip() for h in _raw_hosts.split(",") if h.strip()]
+
+# Required for Railway's HTTPS proxy — include your public domain(s) here
+CSRF_TRUSTED_ORIGINS = [
+    f"https://{h}" for h in ALLOWED_HOSTS
+    if h not in ("127.0.0.1", "localhost")
+]
+
+# —— Apps ———————————————————————————————————————————————————————————————————
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.auth",
     "django.contrib.messages",
+    "django.contrib.staticfiles",   # needed for whitenoise collectstatic
     "social_django",
     "voting",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",   # serve static files, right after Security
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -55,7 +66,12 @@ TEMPLATES = [
     }
 ]
 
-# ── Database ──────────────────────────────────────────────────────────────────
+# —— Static files ————————————————————————————————————————————————————————————
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# —— Database ————————————————————————————————————————————————————————————————
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -67,6 +83,19 @@ DATABASES = {
         "CONN_MAX_AGE": 60,
     }
 }
+
+# Railway provides a single DATABASE_URL — parse it if present
+_db_url = os.getenv("DATABASE_URL")
+if _db_url:
+    import urllib.parse
+    _u = urllib.parse.urlparse(_db_url)
+    DATABASES["default"].update({
+        "NAME":     _u.path.lstrip("/"),
+        "USER":     _u.username,
+        "PASSWORD": _u.password,
+        "HOST":     _u.hostname,
+        "PORT":     str(_u.port or 5432),
+    })
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_HTTPONLY = True
