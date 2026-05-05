@@ -1,7 +1,10 @@
 from django.urls import path, include
+from django.http import JsonResponse
 from voting import views
 
 urlpatterns = [
+    path("health/", lambda r: JsonResponse({"ok": True}), name="health"), # for railway deployment
+
     path("",                         views.index_view,          name="index"),
     path("logout/",                  views.logout_view,         name="logout"),
     path("auth/error/",              views.auth_error_view,     name="auth_error"),

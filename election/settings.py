@@ -19,7 +19,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 # Reads comma-separated hosts from env, e.g. "myapp.railway.app,myapp.up.railway.app"
 _raw_hosts = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost")
 ALLOWED_HOSTS = [h.strip() for h in _raw_hosts.split(",") if h.strip()]
-
+ALLOWED_HOSTS.append("healthcheck.railway.app")  # required for Railway healthchecks
 # Required for Railway's HTTPS proxy — include your public domain(s) here
 CSRF_TRUSTED_ORIGINS = [
     f"https://{h}" for h in ALLOWED_HOSTS
