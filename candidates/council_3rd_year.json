@@ -64,6 +64,16 @@
       "bio": "",
       "photo_initials": "AD",
       "is_nota": false
+    },
+    {
+      "id": 999,
+      "name": "None of the Above",
+      "affiliation": "",
+      "year": "",
+      "manifesto_url": "",
+      "bio": "",
+      "photo_initials": "—",
+      "is_nota": true
     }
     
   ]

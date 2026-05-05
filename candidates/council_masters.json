@@ -1,0 +1,29 @@
+{
+  "race_id": "council_masters",
+  "race_name": "Masters' Student Council",
+  "max_votes": 1,
+  "nota_ref_id": 999,
+  "eligible_suffixes": ["_ma2024"],
+  "candidates": [
+    {
+      "id": 25,
+      "name": "Anmol Agarwal,",
+      "affiliation": "Independent",
+      "year": "M.A. Economics 2025-27",
+      "manifesto_url": "",
+      "bio": "",
+      "photo_initials": "AA",
+      "is_nota": false
+    },
+    {
+      "id": 999,
+      "name": "None of the Above",
+      "affiliation": "",
+      "year": "",
+      "manifesto_url": "",
+      "bio": "",
+      "photo_initials": "—",
+      "is_nota": true
+    }
+  ]
+}
