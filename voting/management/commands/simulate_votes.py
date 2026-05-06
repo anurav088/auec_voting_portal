@@ -5,6 +5,7 @@ Creates 1000 voters, issues tokens, casts randomised votes,
 then exports the ledger and prints a final tally.
 
 Run: python manage.py simulate_votes [--voters 1000] [--reset]
+check 
 """
 
 import random
@@ -18,7 +19,7 @@ import json, pathlib
 
 
 class Command(BaseCommand):
-    help = "Simulate N voters casting votes end-to-end."
+    help = "Simulate N voters casting votes end-to-end"
 
     def add_arguments(self, parser):
         parser.add_argument("--voters", type=int, default=1000)
