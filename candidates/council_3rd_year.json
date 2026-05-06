@@ -35,36 +35,7 @@
       "photo_initials": "AL",
       "is_nota": false
     },
-    {
-      "id": 18,
-      "name": "Veda Samhita",
-      "affiliation": "United Students' Front",
-      "year": "UG2024",
-      "manifesto_url": "",
-      "bio": "",
-      "photo_initials": "VS",
-      "is_nota": false
-    },
-    {
-      "id": 19,
-      "name": "Trisha Iyer",
-      "affiliation": "United Students' Front",
-      "year": "UG2024",
-      "manifesto_url": "",
-      "bio": "",
-      "photo_initials": "TI",
-      "is_nota": false
-    },
-    {
-      "id": 20,
-      "name": "Avanish D",
-      "affiliation": "United Students' Front",
-      "year": "UG2024",
-      "manifesto_url": "",
-      "bio": "",
-      "photo_initials": "AD",
-      "is_nota": false
-    },
+    
     {
       "id": 999,
       "name": "None of the Above",

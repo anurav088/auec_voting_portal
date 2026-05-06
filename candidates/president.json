@@ -25,16 +25,7 @@
       "photo_initials": "AS",
       "is_nota": false
     },
-    {
-      "id": 3,
-      "name": "Partho Protim Roy",
-      "affiliation": "United Students' Front",
-      "year": "UG2024",
-      "manifesto_url": "",
-      "bio": "",
-      "photo_initials": "PPR",
-      "is_nota": false
-    },
+    
     {
       "id": 999,
       "name": "None of the Above",
