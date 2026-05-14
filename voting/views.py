@@ -127,7 +127,7 @@ def issue_token_view(request):
         return _err("Race not found.")
     try:
         raw_token = issue_token_for_race(request.voter, race)
-    except ValueError as e:
+    except (ValueError, VoteError) as e:
         return _err(str(e), status=409)
     return _ok({"token": raw_token, "race_id": race_id})
 
