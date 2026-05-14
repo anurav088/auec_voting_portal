@@ -9,13 +9,13 @@ Multi-vote + NOTA rules:
   Each produces one Vote row. The token is marked used after all rows inserted.
 - Unique voter count = COUNT(DISTINCT token_hash) per race.
 """
-
+import pytz
 import hashlib
 import secrets
 import logging
 from django.db import transaction, IntegrityError
 from django.utils import timezone
-
+from datetime import datetime
 from .models import Race, Candidate, Voter, VotingToken, Vote
 
 logger = logging.getLogger("voting")
@@ -47,6 +47,7 @@ def compute_receipt(token_hash: str, race_id: str, candidate_ref_ids: list[int])
 # ── Token issuance ─────────────────────────────────────────────────────────────
 
 def issue_token_for_race(voter: Voter, race: Race) -> str:
+    _check_voting_window()   
     if not voter.eligible_races.filter(id=race.id).exists():
         raise ValueError(f"Not eligible for: {race.race_name}")
     if voter.has_voted_races.filter(id=race.id).exists():
@@ -68,6 +69,21 @@ class VoteError(Exception):
 
 # ── Ballot submission ──────────────────────────────────────────────────────────
 
+def _check_voting_window():
+    IST = pytz.timezone("Asia/Kolkata")
+    now_ist = timezone.now().astimezone(IST)
+    
+    open_time  = IST.localize(datetime(2026, 5, 6, 12, 0, 0))
+    close_time = IST.localize(datetime(2026, 5, 8, 12, 0, 0))
+    
+    if now_ist < open_time:
+        opens_str = open_time.strftime("%-d %B %Y at %-I:%M %p IST")
+        raise VoteError(f"Sorry, voting begins on {opens_str}.")
+    if now_ist >= close_time:
+        raise VoteError("Sorry, voting has ended.")
+
+
+
 def submit_ballot(raw_token: str, race_id: str, candidate_ref_ids: list[int]) -> str:
     """
     Submit a complete ballot for one race.
@@ -81,6 +97,8 @@ def submit_ballot(raw_token: str, race_id: str, candidate_ref_ids: list[int]) ->
     """
     if not candidate_ref_ids:
         raise VoteError("No candidates selected.")
+    
+    _check_voting_window()   
 
     token_hash = sha256(raw_token)
 

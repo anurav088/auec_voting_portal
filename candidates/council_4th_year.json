@@ -6,7 +6,7 @@
   "nota_ref_id": 999,
   "candidates": [
     {
-      "id": 21,
+      "id": 33,
       "name": "Arnav Gupta",
       "affiliation": "Horizon",
       "year": "UG2023",
@@ -16,7 +16,7 @@
       "is_nota": false
     },
     {
-      "id": 22,
+      "id": 34,
       "name": "Ayushi Choudhary",
       "affiliation": "Horizon",
       "year": "UG2023",
@@ -26,13 +26,24 @@
       "is_nota": false
     },
     {
-      "id": 23,
+      "id": 35,
       "name": "Teesha Aurora",
       "affiliation": "Horizon",
       "year": "UG2023",
       "manifesto_url": "",
       "bio": "",
       "photo_initials": "TA",
+      "is_nota": false
+    },
+
+    {
+      "id": 36,
+      "name": "Sulagna Moitra",
+      "affiliation": "United Students' Front",
+      "year": "UG2023",
+      "manifesto_url": "",
+      "bio": "",
+      "photo_initials": "SM",
       "is_nota": false
     },
  

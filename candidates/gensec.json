@@ -6,23 +6,33 @@
   "eligible_suffixes": ["all"],
   "candidates": [
     {
-      "id": 4,
-      "name": "Shatakshi Shelly",
+      "id": 30,
+      "name": "Animesh Ojha",
       "affiliation": "Independent",
-      "year": "UG2024",
+      "year": "MA2025",
       "manifesto_url": "",
       "bio": "",
-      "photo_initials": "SS",
+      "photo_initials": "AO",
       "is_nota": false
     },
     {
-      "id": 5,
+      "id": 31,
       "name": "Kriti Chhibber",
       "affiliation": "Horizon",
       "year": "UG2024",
       "manifesto_url": "",
       "bio": "",
       "photo_initials": "KC",
+      "is_nota": false
+    },
+    {
+      "id": 32,
+      "name": "Sulagna Moitra",
+      "affiliation": "United Students' Front",
+      "year": "UG2023",
+      "manifesto_url": "",
+      "bio": "",
+      "photo_initials": "SM",
       "is_nota": false
     },
     
