@@ -73,8 +73,9 @@ def _check_voting_window():
     IST = pytz.timezone("Asia/Kolkata")
     now_ist = timezone.now().astimezone(IST)
     
-    open_time  = IST.localize(datetime(2026, 5, 6, 12, 0, 0))
-    close_time = IST.localize(datetime(2026, 5, 8, 12, 0, 0))
+    open_time  = IST.localize(datetime(2026, 5, 18, 12, 0, 0))
+    close_time = IST.localize(datetime(2026, 5, 20, 12, 0, 0))
+
     
     if now_ist < open_time:
         opens_str = open_time.strftime("%-d %B %Y at %-I:%M %p IST")
